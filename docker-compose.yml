@@ -1,0 +1,19 @@
+# docker-compose run web rails new . --force --no-deps --database=postgresql
+# host: db, username: postgresql, password: into config/database.yml
+# docker-compose build
+# docker-compose run web rake db:create
+# docker-compose up
+version: '3'
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+  web:
+    build: .
+    volumes:
+      - .:/opt/myapp
+    ports:
+      - "3333:3000"
+    depends_on:
+      - db

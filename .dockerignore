@@ -1,0 +1,6 @@
+.git
+.rspec
+log
+tmp
+vender/assets
+node_modules
